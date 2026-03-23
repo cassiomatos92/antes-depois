@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antes e Depois Maternidade</title>
+    <title>Antes e Depois Maternidade - Alinhamento Perfeito</title>
     <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
     <style>
@@ -12,52 +12,76 @@
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            height: 100vh; 
-            background-color: #f9f9f9; /* Fundo suave para contraste */
-            font-family: sans-serif;
+            min-height: 100vh; 
+            background-color: #f5f5f5; /* Um cinza muito claro para contraste suave */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px; /* Respiro em telas menores */
         }
 
-        /* O SEGREDO ESTÁ AQUI: Criei um contêiner wrapper com altura fixa */
+        /* Contêiner wrapper polido e responsivo */
         .wrapper {
             width: 100%;
-            max-width: 600px; /* Largura máxima do slider na tela */
-            height: 80vh; /* Altura fixa para o viewport (80% da altura da tela) */
-            position: relative;
-            overflow: hidden; /* Garante que nada escape do contêiner */
-            border: 2px solid #ccc; /* Uma borda fina para definição */
-            border-radius: 8px; /* Cantos arredondados opcionais */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave opcional */
+            max-width: 700px; /* Largura máxima ideal para telas de laptop */
+            margin: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px; /* Cantos arredondados suaves */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Sombra elegante */
+            overflow: hidden; /* Mantém as imagens dentro dos cantos arredondados */
+            background-color: white;
+            line-height: 0; /* Corrige espaço em branco extra abaixo das imagens */
         }
 
         img-comparison-slider { 
             width: 100%; 
-            height: 100%; /* O slider preenche toda a altura do wrapper */
             outline: none; 
         }
 
         img { 
             width: 100%; 
-            height: 100%; /* A imagem preenche todo o slider */
-            object-fit: cover; /* Faz a imagem cobrir a área sem distorcer a proporção, mas centralizando o corte */
-            object-position: center; /* Centraliza a imagem no corte */
+            height: auto; /* Deixa a altura ser definida proporcionalmente pela largura */
+            display: block;
         }
 
-        /* Personalização da linha divisória e do círculo handle */
+        /* Customização da barra divisória e do handle */
         img-comparison-slider {
-            --divider-width: 2px;
-            --divider-color: #fff;
-            --handle-color: #fff;
-            --handle-width: 20px;
-            --handle-height: 20px;
+            /* Personalize a linha divisória */
+            --divider-width: 3px;
+            --divider-color: rgba(255,255,255,0.7); /* Branco semitransparente */
+            
+            /* Personalize o círculo de controle (handle) */
+            --handle-color: rgba(255,255,255,0.9); /* Branco quase sólido */
+            --handle-width: 35px;
+            --handle-height: 35px;
+            --handle-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
+
+        /* Adicionando rótulos "Antes" e "Depois" (opcional, remova se não quiser) */
+        .label {
+            position: absolute;
+            bottom: 20px;
+            padding: 8px 15px;
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 14px;
+            border-radius: 20px;
+            pointer-events: none; /* Garante que o rótulo não interfira no slider */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .antes { left: 20px; }
+        .depois { right: 20px; }
+
     </style>
 </head>
 <body>
 
     <div class="wrapper">
         <img-comparison-slider direction="vertical">
-          <img slot="first" src="ANTES.jpeg" alt="Foto original (com fundo vermelho)" />
-          <img slot="second" src="DEPOIS.jpeg" alt="Foto editada (com fundo branco)" />
+          <img slot="first" src="ANTES.jpeg" alt="Antes - Foto original com cenário vermelho" />
+          <img slot="second" src="DEPOIS.jpeg" alt="Depois - Foto editada com cenário de tecidos" />
+          
+          <span slot="first" class="label antes">Antes</span>
+          <span slot="second" class="label depois">Depois</span>
         </img-comparison-slider>
     </div>
 
