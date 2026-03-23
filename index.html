@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antes e Depois</title>
 
-    <!-- Biblioteca -->
     <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
 
@@ -25,7 +24,6 @@
         .wrapper {
             width: 100%;
             max-width: 600px; 
-            margin: 0 auto;
             position: relative;
         }
 
@@ -33,7 +31,6 @@
             width: 100%; 
             outline: none;
 
-            /* Estilo do slider */
             --divider-width: 2px;
             --divider-color: #ffffff;
             --handle-color: #ffffff;
@@ -45,19 +42,27 @@
             display: block; 
         }
 
-        /* Texto "Arraste" */
-        .hint {
+        /* TEXTOS */
+        .label {
             position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 10px;
+            padding: 5px 10px;
+            font-size: 12px;
             color: white;
-            font-size: 14px;
             background: rgba(0,0,0,0.5);
-            padding: 6px 12px;
-            border-radius: 20px;
+            border-radius: 5px;
+            z-index: 10;
             pointer-events: none;
         }
+
+        .antes {
+            left: 10px;
+        }
+
+        .depois {
+            right: 10px;
+        }
+
     </style>
 </head>
 
@@ -65,14 +70,15 @@
 
     <div class="wrapper">
 
-        <!-- Slider corrigido -->
+        <!-- TEXTOS -->
+        <div class="label antes">ANTES</div>
+        <div class="label depois">DEPOIS</div>
+
+        <!-- SLIDER -->
         <img-comparison-slider direction="horizontal">
-            <!-- Mostra o DEPOIS primeiro (mais impacto) -->
             <img slot="first" src="DEPOIS.jpeg" alt="Depois" />
             <img slot="second" src="ANTES.jpeg" alt="Antes" />
         </img-comparison-slider>
-
-        <div class="hint">Arraste</div>
 
     </div>
 
