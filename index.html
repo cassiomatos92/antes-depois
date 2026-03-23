@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antes e Depois</title>
 
+    <!-- Biblioteca -->
     <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
 
@@ -31,7 +32,8 @@
             width: 100%; 
             outline: none;
 
-            --divider-width: 2px;
+            /* Linha do meio */
+            --divider-width: 3px;
             --divider-color: #ffffff;
             --handle-color: #ffffff;
         }
@@ -42,25 +44,42 @@
             display: block; 
         }
 
-        /* TEXTOS */
+        /* LABELS */
         .label {
             position: absolute;
-            top: 10px;
-            padding: 5px 10px;
-            font-size: 12px;
+            top: 15px;
+            padding: 6px 12px;
+            font-size: 11px;
             color: white;
-            background: rgba(0,0,0,0.5);
-            border-radius: 5px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 20px;
             z-index: 10;
             pointer-events: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
         }
 
         .antes {
-            left: 10px;
+            left: 15px;
         }
 
         .depois {
-            right: 10px;
+            right: 15px;
+        }
+
+        /* TEXTO INFERIOR */
+        .hint {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 12px;
+            background: rgba(0,0,0,0.6);
+            padding: 6px 12px;
+            border-radius: 20px;
+            pointer-events: none;
         }
 
     </style>
@@ -70,15 +89,18 @@
 
     <div class="wrapper">
 
-        <!-- TEXTOS -->
-        <div class="label antes">ANTES</div>
-        <div class="label depois">DEPOIS</div>
+        <!-- TEXTOS (estratégico: mostra resultado primeiro) -->
+        <div class="label antes">DEPOIS</div>
+        <div class="label depois">ANTES</div>
 
         <!-- SLIDER -->
         <img-comparison-slider direction="horizontal">
             <img slot="first" src="DEPOIS.jpeg" alt="Depois" />
             <img slot="second" src="ANTES.jpeg" alt="Antes" />
         </img-comparison-slider>
+
+        <!-- TEXTO -->
+        <div class="hint">Arraste para ver</div>
 
     </div>
 
